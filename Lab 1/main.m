@@ -128,6 +128,6 @@ contour(case2_X,case2_Y,case2_NN, [0.5,1.5],'g');
 contour(case2_X,case2_Y,case2_5NN, [0.5,1.5],'m');
 scatter(data_C(:,1), data_C(:,2),'r')
 scatter(data_D(:,1), data_D(:,2),'b')
-scatter(data_E(:,1), data_E(:,2),'')
+scatter(data_E(:,1), data_E(:,2))
 hold off
 % axis equal
