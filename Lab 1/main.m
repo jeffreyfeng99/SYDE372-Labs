@@ -61,8 +61,30 @@ case2_MAP = classify_data(case2_MAP_CD,case2_MAP_CE,case2_MAP_DE);
 % MAP Decision Boundary for case 2 alternative method
 case2_MAP_V2 = MAP_V2(mu_C,mu_D,mu_E,covar_C,covar_D,covar_E,size(data_C,1),size(data_D,1),size(data_E,1),case2_X,case2_Y);
 
+% NN Decision Boundary for case 1
+case1_NN = kNN(data_A,data_B,case1_X,case1_Y,1);
+case1_NN = classify_data(case1_NN);
+
+% NN Decision Boundary for case 2
+case2_NN_CD = kNN(data_C,data_D,case2_X,case2_Y,1);
+case2_NN_CE = kNN(data_C,data_E,case2_X,case2_Y,1);
+case2_NN_DE = kNN(data_D,data_E,case2_X,case2_Y,1);
+case2_NN = classify_data(case2_NN_CD,case2_NN_CE,case2_NN_DE);
+
+% 5NN Decision Boundary for case 1
+case1_5NN = kNN(data_A,data_B,case1_X,case1_Y,5);
+case1_5NN = classify_data(case1_5NN);
+
+% 5NN Decision Boundary for case 2
+case2_5NN_CD = kNN(data_C,data_D,case2_X,case2_Y,5);
+case2_5NN_CE = kNN(data_C,data_E,case2_X,case2_Y,5);
+case2_5NN_DE = kNN(data_D,data_E,case2_X,case2_Y,5);
+case2_5NN = classify_data(case2_5NN_CD,case2_5NN_CE,case2_5NN_DE);
+
 % Remove the code below this (this is just for current testing purposes)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%plotting Case 1
 figure
 hold on
 contour(case1_X,case1_Y,case1_GED,[0.5,0.5], 'r');
@@ -75,6 +97,16 @@ scatter(data_B(:,1), data_B(:,2))
 hold off
 axis equal
 
+figure('Name','Case 1 NN (Red) and KNN (Blue)')
+hold on
+contour(case1_X,case1_Y,case1_NN,[0.5,0.5], 'r');
+contour(case1_X,case1_Y,case1_5NN,[0.5,0.5], 'b');
+scatter(data_A(:,1), data_A(:,2),'g')
+scatter(data_B(:,1), data_B(:,2),'m')
+hold off
+axis equal
+
+%plotting case 2
 figure
 hold on
 contour(case2_X,case2_Y,case2_GED, [0.5,1.5],'r');
@@ -86,6 +118,15 @@ plot_ellipse(mu_D(1),mu_D(2),theta_D,sqrt(eval_D(1,1)),sqrt(eval_D(2,2)));
 plot_ellipse(mu_E(1),mu_E(2),theta_E,sqrt(eval_E(1,1)),sqrt(eval_E(2,2)));
 scatter(data_C(:,1), data_C(:,2))
 scatter(data_D(:,1), data_D(:,2))
+scatter(data_E(:,1), data_E(:,2))
+hold off
+
+figure
+hold on
+contour(case2_X,case2_Y,case2_NN, [0.5,1.5],'g');
+contour(case2_X,case2_Y,case2_5NN, [0.5,1.5],'m');
+scatter(data_C(:,1), data_C(:,2),'r')
+scatter(data_D(:,1), data_D(:,2),'b')
 scatter(data_E(:,1), data_E(:,2))
 hold off
 % axis equal
