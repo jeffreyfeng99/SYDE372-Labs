@@ -52,7 +52,6 @@ case2_GED = classify_data(case2_GED_CD,case2_GED_CE,case2_GED_DE);
 case1_MAP = MAP(mu_A,mu_B,covar_A,covar_B,size(data_A,1),size(data_B,1),case1_X,case1_Y);
 case1_MAP = classify_data(case1_MAP);
 
-
 % MAP Decision Boundary for case 2
 case2_MAP_CD = MAP(mu_C,mu_D,covar_C,covar_D,size(data_C,1),size(data_D,1),case2_X,case2_Y);
 case2_MAP_CE = MAP(mu_C,mu_E,covar_C,covar_E,size(data_C,1),size(data_E,1),case2_X,case2_Y);
