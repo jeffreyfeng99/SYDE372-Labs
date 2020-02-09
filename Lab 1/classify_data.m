@@ -1,6 +1,8 @@
 function class_map = classify_data(dist_1, dist_2, dist_3)
 
-if nargin < 2
+if nargin < 2 
+    % only one grid of points
+    % class_map is just the decision grid given
     class_map = dist_1 < 0;
 else
     class_map = zeros(size(dist_1));

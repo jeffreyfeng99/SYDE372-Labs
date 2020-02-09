@@ -1,4 +1,15 @@
 function data = generate_bivariate_cluster(n, mu, covar)
+% Parameters
+%
+% n -- 
+% mu --
+% covar --
+%
+% ---------
+% Returns
+%
+% data -- 
+
     data = randn(n,2);
 %     Method 1
     data = data*chol(covar) + repmat(mu,n,1);
