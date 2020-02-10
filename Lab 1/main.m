@@ -138,15 +138,16 @@ case2_5NN_error = classify_data_V2(case2_5NN_error);
 %plotting Case 1
 figure
 hold on
-% contour(case1_X,case1_Y,case1_GED,[0.5,0.5], 'r');
+contour(case1_X,case1_Y,case1_GED,[0.5,0.5], 'r');
 contour(case1_X,case1_Y,case1_MED,[0.5,0.5], 'b');
-% contour(case1_X,case1_Y,case1_MAP,[0.5,0.5], 'g');
+contour(case1_X,case1_Y,case1_MAP,[0.5,0.5], 'g');
 plot_ellipse(mu_A(1),mu_A(2),theta_A,sqrt(eval_A(1,1)),sqrt(eval_A(2,2)));
 plot_ellipse(mu_B(1),mu_B(2),theta_B,sqrt(eval_B(1,1)),sqrt(eval_B(2,2)));
 scatter(data_A(:,1), data_A(:,2))
 scatter(data_B(:,1), data_B(:,2))
 hold off
 axis equal
+
 % 
 % figure('Name','Case 1 NN (Red) and KNN (Blue)')
 % hold on
@@ -160,10 +161,9 @@ axis equal
 %plotting case 2
 figure
 hold on
-% contour(case2_X,case2_Y,case2_GED, [0.5,1.5],'r');
+contour(case2_X,case2_Y,case2_GED, [0.5,1.5],'r');
 contour(case2_X,case2_Y,case2_MED, [0.5,1.5],'b');
-% contour(case2_X,case2_Y,case2_MAP, [0.5,1.5],'g');
-% contour(case2_X,case2_Y,case2_MAP_V2, [0.5,1.5],'m');
+contour(case2_X,case2_Y,case2_MAP, [0.5,1.5],'g');
 plot_ellipse(mu_C(1),mu_C(2),theta_C,sqrt(eval_C(1,1)),sqrt(eval_C(2,2)));
 plot_ellipse(mu_D(1),mu_D(2),theta_D,sqrt(eval_D(1,1)),sqrt(eval_D(2,2)));
 plot_ellipse(mu_E(1),mu_E(2),theta_E,sqrt(eval_E(1,1)),sqrt(eval_E(2,2)));
