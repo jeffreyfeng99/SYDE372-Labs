@@ -140,6 +140,7 @@ contour(case1_X,case1_Y,case1_5NN,[0.5,0.5], 'LineColor', '#e46aeb');
 scatter(data_A(:,1),data_A(:,2),sz,'x', 'MarkerEdgeColor', '#EDB120')
 scatter(data_B(:,1),data_B(:,2),sz,'o', 'MarkerEdgeColor', '#7E2F8E')
 xlabel('x1'); ylabel('x2')                     
+
 hold off
 axis equal
 
