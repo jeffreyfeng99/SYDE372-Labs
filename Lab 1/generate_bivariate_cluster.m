@@ -1,14 +1,14 @@
 function data = generate_bivariate_cluster(n, mu, covar)
 % Parameters
 %
-% n -- 
-% mu --
-% covar --
+% n -- number of samples
+% mu -- mean
+% covar -- covariance matrix
 %
-% ---------
+% -------------------------------------------------------------------------
 % Returns
 %
-% data -- 
+% data -- row vector of n sample points for each class
 
     data = randn(n,2);
 %     Method 1

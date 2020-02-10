@@ -13,11 +13,11 @@ for i = 1:size(X,1)
                distances(a) = dist;         
            end
 
-           %sort distance array from shortest to longest 
+           % sort distance array from shortest to longest 
            sorted_distances = sort(distances);
            k_sum = 0;
 
-           %prototype calculation for Class 
+           % prototype calculation for Class 
            for z = 1:k
                k_sum = k_sum+sorted_distances(z);
            end
