@@ -9,7 +9,7 @@ for i = 1:size(X,1)
            XY_mu_ = [X(i,j)-mu(1,1,k) Y(i,j)-mu(1,2,k)];
            exp_term = exp(-1/2*(XY_mu_*(covar(:,:,k)^(-1))*XY_mu_'));
            
-           decision_grid(i,j,k) = (priors(1)*exp_term)...
+           decision_grid(i,j,k) = (priors(k)*exp_term)...
                                 /((2*pi)*sqrt(det(covar(:,:,k))));
        end
    end
