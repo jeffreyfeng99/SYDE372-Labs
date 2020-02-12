@@ -1,3 +1,7 @@
+%
+% Initialize the class data 
+%
+
 % Class A
 n_A = 200;
 mu_A = [5 10];
@@ -33,8 +37,7 @@ covar_E = [10 -5;-5 20];
 [evec_E, eval_E] = eig(covar_E);
 theta_E = atan(evec_E(1,2)/evec_E(1,1));
 
-% Frequently used parameters
-                          % Stack ... along third dim
+% Stacking statistical parameters along third dimension
 c1_mu = cat(3,mu_A,mu_B); % Case 1 means
 c2_mu = cat(3,mu_C,mu_D,mu_E); % Case 2 means
 c1_covar = cat(3,covar_A,covar_B); % Case 1 covariance matrices

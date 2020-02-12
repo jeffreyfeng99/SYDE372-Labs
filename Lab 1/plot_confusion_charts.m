@@ -1,3 +1,7 @@
+%
+% Plot the confusion charts for each classifier of each case
+%
+
 case1_labels = ['A';'B'];
 case2_labels = ['C';'D';'E'];
 

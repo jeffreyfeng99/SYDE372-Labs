@@ -1,23 +1,33 @@
-function class_map = classify_data(dist_1, dist_2, dist_3)
+%
+% classify_data(decision_grid, MAP)
+%
+% This function returns a 2D matrix representing coordinate points
+% on the XY plane. The input is a 3D matrix of distances (or posterior 
+% probabilities in the case of MAP), in which the third axis 
+% corresponds to the varying classes. MED, GED, and kNN selects the class 
+% by indexing according to minumum distance along the third axis. MAP 
+% chooses based on indexing according to maximum posterior along the third
+% axis. The respective value of each element in the output matrix
+% is the determined class of data point at that location.  
+%
+% decision_grid: 3D matrix (x by y by n), where x and y are the 
+%                 coordinate axes, and n is the number of classes
+% MAP: If true, select the maximum indices according to MAP decision rule
+%
 
-if nargin < 2 
-    % only one grid of points
-    % class_map is just the decision grid given
-    class_map = dist_1 < 0;
+function class_map = classify_data(decision_grid, MAP)
+
+% MAP parameter does not exist, so default it to false
+if ~exist('MAP','var')
+  MAP = false;
+end
+
+if MAP == false
+    [~,class_map] = min(decision_grid,[],3);
+    class_map = class_map - 1;
 else
-    class_map = zeros(size(dist_1));
-    
-    for i = 1:size(dist_1,1)
-        for j = 1:size(dist_1,2)
-            if dist_1(i,j) < 0 && dist_2(i,j) < 0
-                class_map(i,j) = 0;
-            elseif dist_1(i,j) >= 0 && dist_3(i,j) < 0
-                class_map(i,j) = 1;
-            elseif dist_2(i,j) >= 0 && dist_3(i,j) >= 0
-                class_map(i,j) = 2;    
-            end
-        end
-    end
+    [~,class_map] = max(decision_grid,[],3);
+    class_map = class_map - 1;
 end
 
 end

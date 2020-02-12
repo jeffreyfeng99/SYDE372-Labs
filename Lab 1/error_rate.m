@@ -1,12 +1,18 @@
-function [C, error] = error_rate(predicted, total)
-% Parameters
-% predicted -- column vector of all the classified points
-% total -- row vector of class totals
 %
-% -------------------------------------------------------------------------
+% error_rate(predicted, total)
+%
+% Create confusion matrix according to vectors of classified points
+%
+% Parameters
+% predicted: column vector of all the classified points
+% total: row vector of class totals
+%
 % Returns
-% C -- confusion matrix based on predicted and total
-% error -- P(e) calculated from C
+% C: confusion matrix based on predicted and total
+% error: P(e) calculated from C
+%
+
+function [C, error] = error_rate(predicted, total)
 
 % Create column vector of true classes to compare to predicted
 % Repeat the class label for number of data points in that class

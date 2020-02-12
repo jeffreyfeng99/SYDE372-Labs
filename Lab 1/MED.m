@@ -1,14 +1,19 @@
-function decision_grid = MED(mu_1, mu_2, X, Y)
-% Creates a decision grid for a two-class case based on MED
+%
+% MED(mu, X, Y)
+%
+% This method determines boundaries based on the MED decision rule.
+%
+% Parameters
+% mu: 3D matrix (1,2,n) containing the mean vectors of n classes
+% X: x-coordinates of sampling grid
+% Y: y-coordinates of sampling grid
+%
 
-decision_grid = zeros(size(X));
+function decision_grid = MED(mu, X, Y)
 
-for i = 1:size(X,1)
-   for j = 1:size(X,2)
-       gx_k = [X(i,j)-mu_1(1) Y(i,j)-mu_1(2)]*[X(i,j)-mu_1(1) Y(i,j)-mu_1(2)]';
-       gx_l = [X(i,j)-mu_2(1) Y(i,j)-mu_2(2)]*[X(i,j)-mu_2(1) Y(i,j)-mu_2(2)]';
-       
-       decision_grid(i,j) = gx_k - gx_l;
-   end
-end
+X = repmat(X,[1,1,size(mu,3)]);
+Y = repmat(Y,[1,1,size(mu,3)]);
+decision_grid = (X-mu(1,1,:)).^2 + (Y-mu(1,2,:)).^2;
+decision_grid = classify_data(decision_grid);
+
 end
