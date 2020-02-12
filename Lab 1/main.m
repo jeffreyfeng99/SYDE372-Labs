@@ -50,7 +50,6 @@ case1_MAP = MAP(c1_mu,c1_covar,[n_A n_B],case1_X,case1_Y);
 % MAP Decision Boundary for case 2 alternative method
 case2_MAP = MAP(c2_mu,c2_covar,[n_C n_D n_E],case2_X,case2_Y);
 
-<<<<<<< HEAD
 % NN Decision Boundary for case 1
 case1_NN = kNN({data_A,data_B},case1_X,case1_Y,1);
 
