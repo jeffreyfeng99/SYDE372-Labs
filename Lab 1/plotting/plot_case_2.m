@@ -208,7 +208,7 @@ title('Case 2: Nearest Neighbour decision boundary');
 xlabel('x1'); ylabel('x2')  
 
 % Plot decision boundary
-contour(case2_X,case2_Y,case2_NN,[0.5,0.5], 'LineColor', '#495fd1', 'LineWidth',1.5);
+contour(case2_X,case2_Y,case2_NN,[0.5,1.5], 'LineColor', '#495fd1', 'LineWidth',1.5);
 
 % Scatter data points
 scatter(data_C(:,1),data_C(:,2),sz,'+', 'MarkerEdgeColor', '#77AC30')
@@ -228,7 +228,7 @@ title('Case 2: 5-Nearest Neighbours decision boundary');
 xlabel('x1'); ylabel('x2')  
 
 % Plot decision boundary
-contour(case2_X,case2_Y,case2_5NN,[0.5,0.5], 'LineColor', '#e46aeb', 'LineWidth',1.5);
+contour(case2_X,case2_Y,case2_5NN,[0.5,1.5], 'LineColor', '#e46aeb', 'LineWidth',1.5);
 
 % Scatter data points
 scatter(data_C(:,1),data_C(:,2),sz,'+', 'MarkerEdgeColor', '#77AC30')
@@ -248,8 +248,8 @@ title('Case 2: Nearest Neighbour and 5-Nearest Neighbour decision boundaries');
 xlabel('x1'); ylabel('x2')  
 
 % Plot decision boundary
-contour(case2_X,case2_Y,case2_NN,[0.5,0.5], 'LineColor', '#495fd1', 'LineWidth',1.5);
-contour(case2_X,case2_Y,case2_5NN,[0.5,0.5], 'LineColor', '#e46aeb', 'LineWidth',1.5);
+contour(case2_X,case2_Y,case2_NN,[0.5,1.5], 'LineColor', '#495fd1', 'LineWidth',1.5);
+contour(case2_X,case2_Y,case2_5NN,[0.5,1.5], 'LineColor', '#e46aeb', 'LineWidth',1.5);
 
 % Scatter data points
 scatter(data_C(:,1),data_C(:,2),sz,'+', 'MarkerEdgeColor', '#77AC30')
