@@ -4,6 +4,7 @@
 
 clear all;
 close all;
+addpath('./classifiers', './cluster_generation', './error_analysis', './plotting');
 
 % To maintain consistent prototyping - remove for actual evaluations
 seed = 5;
@@ -78,8 +79,6 @@ error_case_defn;
 [C2_5NN, case2_5NN_error] = error_rate(case2_5NN_error, [n_C n_D n_E]);
 
 %% Plotting
-% Remove the code below this (this is just for current testing purposes)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Contour colours:
 % GED: #661010
@@ -102,6 +101,7 @@ error_case_defn;
 % D: #4DBEEE, o
 % E: #A2142F, x
 
+% Size of markers
 sz = 25;
 
 %% Plotting Case 1
@@ -492,7 +492,7 @@ hold off
 axis equal
 
 
-% Plot Case 1 NN decision boundary
+% Plot Case 2 NN decision boundary
 figure
 hold on
 title('Case 2: Nearest Neighbour decision boundary');
@@ -512,7 +512,7 @@ title(c2_lg_NN, 'Legend')
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 1]);
 hold off
 
-% Plot Case 1 5-NN decision boundary
+% Plot Case 2 5-NN decision boundary
 figure
 hold on
 title('Case 2: 5-Nearest Neighbours decision boundary');
