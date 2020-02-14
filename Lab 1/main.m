@@ -28,7 +28,7 @@ case1_x = [min(min(data_A(:,1)),min(data_B(:,1))):step_size:max(max(data_A(:,1))
 case1_y = [min(min(data_A(:,2)),min(data_B(:,2))):step_size:max(max(data_A(:,2)),max(data_B(:,2)))];
 [case1_X,case1_Y] = meshgrid(case1_x,case1_y);
 
-% Create a 2D grid of points for case 1
+% Create a 2D grid of points for case 2
 case2_x = [min([min(data_C(:,1)),min(data_D(:,1)),min(data_E(:,1))]):step_size:max([max(data_C(:,1)),max(data_D(:,1)),max(data_E(:,1))])];
 case2_y = [min([min(data_C(:,2)),min(data_D(:,2)),min(data_E(:,2))]):step_size:max([max(data_C(:,2)),max(data_D(:,2)),max(data_E(:,2))])];
 [case2_X,case2_Y] = meshgrid(case2_x,case2_y);

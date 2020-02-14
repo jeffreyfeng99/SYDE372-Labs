@@ -20,7 +20,7 @@ for i = 1:size(X,1)
            % get distance between (X,Y) point and all Class sample points
            distances = sqrt((X(i,j)- data{m}(:,1)).^2 + (Y(i,j)-data{m}(:,2)).^2);
             
-           % sort distance array from shortest to longest 
+           % sort distance array from shortest to longest and retrieve corresponding indices
            [~, sortIdx] = sort(distances);
            
            % prototype calculation for Class 
