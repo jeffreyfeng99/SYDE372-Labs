@@ -21,7 +21,7 @@ data_D = generate_bivariate_cluster(n_D,mu_D,covar_D);
 data_E = generate_bivariate_cluster(n_E,mu_E,covar_E);
 
 % Sampling rate - lower for higher resolution
-step_size = 0.25; 
+step_size = 0.1; 
 
 % Create a 2D grid of points for case 1
 case1_x = [min(min(data_A(:,1)),min(data_B(:,1))):step_size:max(max(data_A(:,1)),max(data_B(:,1)))];
