@@ -22,6 +22,6 @@ data = data*chol(covar) + repmat(mu',n,1);
 % Method 2
 % [V, D] = eig(covar);
 % D_inv = sqrt(D^(-1));
-% data = (V*inv(D_inv)*(data'))' + repmat(mu,n,1);
+% data = (V*(D_inv^(-1))*(data'))' + repmat(mu',n,1);
 
 end
