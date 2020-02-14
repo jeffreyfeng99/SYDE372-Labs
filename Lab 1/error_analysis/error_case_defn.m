@@ -15,9 +15,9 @@ case1_Y_error = [data_A(:,2); data_B(:,2)];
 
 case1_MED_error = MED(c1_mu,case1_X_error,case1_Y_error);
 
-case1_GED_error = GED(c1_mu,cat(3,covar_A,covar_B),case1_X_error,case1_Y_error);
+case1_GED_error = GED(c1_mu,c1_covar,case1_X_error,case1_Y_error);
 
-case1_MAP_error = MAP(cat(3,mu_A,mu_B),cat(3,covar_A,covar_B),[n_A n_B],case1_X_error,case1_Y_error);
+case1_MAP_error = MAP(c1_mu,c1_covar,[n_A n_B],case1_X_error,case1_Y_error);
 
 case1_NN_X_error = [test_A_NN(:,1); test_B_NN(:,1)];
 case1_NN_Y_error = [test_A_NN(:,2); test_B_NN(:,2)];
@@ -29,11 +29,11 @@ case1_5NN_error = kNN({data_A,data_B},case1_NN_X_error,case1_NN_Y_error,5);
 case2_X_error = [data_C(:,1); data_D(:,1); data_E(:,1)];
 case2_Y_error = [data_C(:,2); data_D(:,2); data_E(:,2)];
 
-case2_MED_error = MED(cat(3,mu_C,mu_D,mu_E),case2_X_error,case2_Y_error);
+case2_MED_error = MED(c2_mu,case2_X_error,case2_Y_error);
 
-case2_GED_error = GED(cat(3,mu_C,mu_D,mu_E),cat(3,covar_C,covar_D,covar_E),case2_X_error,case2_Y_error);
+case2_GED_error = GED(c2_mu,c2_covar,case2_X_error,case2_Y_error);
 
-case2_MAP_error = MAP(cat(3,mu_C,mu_D,mu_E),cat(3,covar_C,covar_D,covar_E),[n_C n_D n_E],case2_X_error,case2_Y_error);
+case2_MAP_error = MAP(c2_mu,c2_covar,[n_C n_D n_E],case2_X_error,case2_Y_error);
 
 case2_NN_X_error = [test_C_NN(:,1); test_D_NN(:,1); test_E_NN(:,1)];
 case2_NN_Y_error = [test_C_NN(:,2); test_D_NN(:,2); test_E_NN(:,1)];
