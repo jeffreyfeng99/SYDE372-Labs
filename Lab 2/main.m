@@ -1,37 +1,20 @@
 clear all;
 close all;
 
+addpath('./datasets','./plotting');
+
 % Sampling rate
 step_size = 0.1;
 
 load_data;
 
-sect1_array_a = [min(data_a(1,:)):step_size:max(data_a(1,:))+1];
-sect1_array_b = [min(data_b(1,:)):step_size:max(data_b(1,:))+1];
+[m_hat_a,var_hat_a] = parametric_gaussian(data_1a);
+[m_hat_b,var_hat_b] = parametric_gaussian(data_1b);
 
-[m_a,v_a] = parametric_gaussian(data_a);
-p_hat_a = normpdf(sect1_array_a,m_a,v_a);
-p_a = normpdf(sect1_array_a,5,1);
+lambda_hat_a = parametric_exponential(data_1a);
+lambda_hat_b = parametric_exponential(data_1b);
 
-[m_b,v_b] = parametric_gaussian(data_b);
-p_hat_b = normpdf(sect1_array_b,m_b,v_b);
-p_b = exppdf(sect1_array_b,1);
+[lower_a,upper_a] = parametric_uniform(data_1a);
+[lower_b,upper_b] = parametric_uniform(data_1b);
 
-l_b = parametric_exponential(data_b);
-p_hat_exp_b = exppdf(sect1_array_b,1/l_b);
-p_exp_b = exppdf(sect1_array_b,1);
-
-figure
-plot(sect1_array_a,p_a)
-hold on
-plot(sect1_array_a,p_hat_a)
-
-figure
-plot(sect1_array_b,p_b)
-hold on
-plot(sect1_array_b,p_hat_b)
-
-figure
-plot(sect1_array_b,p_exp_b)
-hold on
-plot(sect1_array_b,p_hat_exp_b)
+plot_1d;
