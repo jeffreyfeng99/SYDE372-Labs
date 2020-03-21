@@ -18,8 +18,11 @@ lambda_hat_b = parametric_exponential(data_1b);
 [lower_a,upper_a] = parametric_uniform(data_1a);
 [lower_b,upper_b] = parametric_uniform(data_1b);
 
-[parz_a, x_a] = parzen_1d(data_1a,[0.01]);
-[parz_b, x_b] = parzen_1d(data_1b,[0.01]);
+[parz_a1, x_a1] = parzen_1d(data_1a,[0.01],0.1);
+[parz_b1, x_b1] = parzen_1d(data_1b,[0.01],0.1);
+
+[parz_a2, x_a2] = parzen_1d(data_1a,[0.01],0.4);
+[parz_b2, x_b2] = parzen_1d(data_1b,[0.01],0.4);
 
 plot_1d;
 
@@ -45,12 +48,15 @@ low_y = min([min(data_2al(:,2)),min(data_2bl(:,2)),min(data_2cl(:,2))]);
 high_y = max([max(data_2al(:,2)),max(data_2bl(:,2)),max(data_2cl(:,2))])+1;
 res = [step_size low_x low_y high_x high_y];
 
+%%% create gaussian window "win" here
+win_mu = [mean(x) mean(y)];
+win_sigma = [400 0;0 400];
+win = mvnpdf([X(:) Y(:)],win_mu,win_sigma);
+win = reshape(win,[size(X,1),size(X,2)]);
 
-%%% create gaussian windown "win" here
-
-[parz_a_2, x_a_2, y_a_2] = parzen_2d(data_2al,res);
-[parz_b_2, x_b_2, y_b_2] = parzen_2d(data_2bl,res);
-[parz_c_2, x_c_2, y_c_2] = parzen_2d(data_2cl,res);
+[parz_a_2, x_a_2, y_a_2] = parzen_2d(data_2al,res,win);
+[parz_b_2, x_b_2, y_b_2] = parzen_2d(data_2bl,res,win);
+[parz_c_2, x_c_2, y_c_2] = parzen_2d(data_2cl,res,win);
 
 parzs = cat(3,parz_a_2,parz_b_2,parz_c_2);
 parz_decision = classify_data(parzs, true);

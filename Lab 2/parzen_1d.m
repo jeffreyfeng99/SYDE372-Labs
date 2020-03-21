@@ -22,7 +22,8 @@
 % Nov. 1997
 %
 
-function [p,x] = parzen_1d(data, res, win)
+function [p,x] = parzen_1d(data, res, sigma)
+% sigma is the standard dev of the Gaussian window
 
 if (size(data,2)>size(data,1)), data = data'; end;
 numpts = size(data,1);
@@ -39,7 +40,7 @@ x = [dl:res:dh+2]';
 p = zeros(length(x),1);  
 
 for i=1:length(x),
-  p(i) = 1/numpts * sum(normpdf(x(i), data, 0.4));
+  p(i) = 1/numpts * sum(normpdf(x(i), data, sigma));
 end;
 
 end
