@@ -62,3 +62,24 @@ parzs = cat(3,parz_a_2,parz_b_2,parz_c_2);
 parz_decision = classify_data(parzs, true);
 
 plot_2d;
+
+%% Sequential Discriminants
+x = [min([min(data_3a(:,1)),min(data_3b(:,1))]):step_size:max([max(data_3a(:,1)),max(data_3b(:,1))])+1];
+y = [min([min(data_3a(:,2)),min(data_3b(:,2))]):step_size:max([max(data_3a(:,2)),max(data_3b(:,2))])+1];
+[X,Y] = meshgrid(x,y);
+
+[G, N_aB, N_bA] = MED_sequential_discriminant(data_3a,data_3b);
+
+grid = [X(:) Y(:)];
+classes = sequential_discriminant_classifier(G,N_aB,N_bA,grid);
+classes = reshape(classes,[size(X,1) size(X,2)]);
+figure
+scatter(data_3a(:,1),data_3a(:,2));
+hold on 
+scatter(data_3b(:,1),data_3b(:,2));
+hold on
+contour(classes);
+
+
+% [class_A] = sequential_discriminant_classifier(G,N_aB,N_bA,data_3a);
+% [class_B] = sequential_discriminant_classifier(G,N_aB,N_bA,data_3b);
