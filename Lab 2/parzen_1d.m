@@ -36,7 +36,8 @@ if (max(dh-dl)/res>1000),
   error('Excessive data range relative to resolution.');
 end;
 
-x = [dl:res:dh+2]';
+%x = [dl:res:dh+2]';
+x = [dl:res:dh]';
 p = zeros(length(x),1);  
 
 for i=1:length(x),
