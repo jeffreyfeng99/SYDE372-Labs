@@ -1,7 +1,7 @@
 function [class_arr] = sequential_discriminant_classifier(G, N_aB, N_bA, x)
 
-x = [ones(length(x),1) x];
-class_arr = zeros(length(x),1);
+x = [ones(size(x,1),1) x];
+class_arr = zeros(size(x,1),1);
 
 for j=1:size(G,2)
     % If Gj classifies x as class B and naB,j = 0 then \Say Class B"
@@ -22,11 +22,9 @@ for j=1:size(G,2)
 %     
 %     class_arr = class_arr + class_A + class_B;
 
-    
 %     if N_bA(j) == 0
 %         class_arr = (classified < 0) ;
 %     end
-
 end
 class_arr = class_arr-2;
 end

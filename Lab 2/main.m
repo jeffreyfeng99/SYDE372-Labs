@@ -70,16 +70,25 @@ y = [min([min(data_3a(:,2)),min(data_3b(:,2))]):step_size:max([max(data_3a(:,2))
 
 [G, N_aB, N_bA] = MED_sequential_discriminant(data_3a,data_3b);
 
+% Show individual discriminants
+figure
+hold on
+scatter(data_3a(:,1),data_3a(:,2));
+scatter(data_3b(:,1),data_3b(:,2));
+for i=1:size(G,2)
+f = @(x,y) G(1,i) + G(2,i)*x + G(3,i)*y;
+fimplicit(f, [min(x),max(x)]);
+end
+
+% Show complete contour
 grid = [X(:) Y(:)];
 classes = sequential_discriminant_classifier(G,N_aB,N_bA,grid);
 classes = reshape(classes,[size(X,1) size(X,2)]);
 figure
-scatter(data_3a(:,1),data_3a(:,2));
 hold on 
+scatter(data_3a(:,1),data_3a(:,2));
 scatter(data_3b(:,1),data_3b(:,2));
-hold on
-contour(classes);
+contour(X,Y,classes);
 
-
-% [class_A] = sequential_discriminant_classifier(G,N_aB,N_bA,data_3a);
-% [class_B] = sequential_discriminant_classifier(G,N_aB,N_bA,data_3b);
+[class_A] = sequential_discriminant_classifier(G,N_aB,N_bA,data_3a);
+[class_B] = sequential_discriminant_classifier(G,N_aB,N_bA,data_3b);
