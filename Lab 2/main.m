@@ -68,27 +68,46 @@ x = [min([min(data_3a(:,1)),min(data_3b(:,1))]):step_size:max([max(data_3a(:,1))
 y = [min([min(data_3a(:,2)),min(data_3b(:,2))]):step_size:max([max(data_3a(:,2)),max(data_3b(:,2))])+1];
 [X,Y] = meshgrid(x,y);
 
-[G, N_aB, N_bA] = MED_sequential_discriminant(data_3a,data_3b);
+[G_1, N_aB_1, N_bA_1] = MED_sequential_discriminant(data_3a,data_3b);
+[G_2, N_aB_2, N_bA_2] = MED_sequential_discriminant(data_3a,data_3b);
+[G_3, N_aB_3, N_bA_3] = MED_sequential_discriminant(data_3a,data_3b);
 
 % Show individual discriminants
 figure
 hold on
 scatter(data_3a(:,1),data_3a(:,2));
 scatter(data_3b(:,1),data_3b(:,2));
-for i=1:size(G,2)
-f = @(x,y) G(1,i) + G(2,i)*x + G(3,i)*y;
+for i=1:size(G_1,2)
+f = @(x,y) G_1(1,i) + G_1(2,i)*x + G_1(3,i)*y;
 fimplicit(f, [min(x),max(x)]);
 end
 
 % Show complete contour
 grid = [X(:) Y(:)];
-classes = sequential_discriminant_classifier(G,N_aB,N_bA,grid);
-classes = reshape(classes,[size(X,1) size(X,2)]);
+% First sequential discriminant
+classes_1 = sequential_discriminant_classifier(G_1,N_aB_1,N_bA_1,grid);
+classes_1 = reshape(classes_1,[size(X,1) size(X,2)]);
 figure
 hold on 
 scatter(data_3a(:,1),data_3a(:,2));
 scatter(data_3b(:,1),data_3b(:,2));
-contour(X,Y,classes);
+contour(X,Y,classes_1);
+% Second sequential discriminant
+classes_2 = sequential_discriminant_classifier(G_2,N_aB_2,N_bA_2,grid);
+classes_2 = reshape(classes_2,[size(X,1) size(X,2)]);
+figure
+hold on 
+scatter(data_3a(:,1),data_3a(:,2));
+scatter(data_3b(:,1),data_3b(:,2));
+contour(X,Y,classes_2);
+% Third sequential discriminant
+classes_3 = sequential_discriminant_classifier(G_3,N_aB_3,N_bA_3,grid);
+classes_3 = reshape(classes_3,[size(X,1) size(X,2)]);
+figure
+hold on 
+scatter(data_3a(:,1),data_3a(:,2));
+scatter(data_3b(:,1),data_3b(:,2));
+contour(X,Y,classes_3);
 
-[class_A] = sequential_discriminant_classifier(G,N_aB,N_bA,data_3a);
-[class_B] = sequential_discriminant_classifier(G,N_aB,N_bA,data_3b);
+plot_error_rates(data_3a,data_3b);
+

@@ -17,14 +17,6 @@ for j=1:size(G,2)
             end
         end
     end
-%     class_B = -((classified > 0) & ~(N_aB(j) | 0));
-%     class_A = (classified < 0) & ~(N_bA(j) | 0);
-%     
-%     class_arr = class_arr + class_A + class_B;
-
-%     if N_bA(j) == 0
-%         class_arr = (classified < 0) ;
-%     end
 end
 class_arr = class_arr-2;
 end

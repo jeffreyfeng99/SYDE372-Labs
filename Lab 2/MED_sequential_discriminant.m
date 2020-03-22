@@ -12,9 +12,6 @@ function [G, N_aB, N_bA] = MED_sequential_discriminant(data_A, data_B)
     N_bA = zeros(j,1);
     
     while (size(data_a,1) > 0 && size(data_b,1) > 0)
-%         a = 
-%         la = length(data_a)
-%         lb = length(data_b)
         rand_a = randi([1 size(data_a,1)]);
         rand_b = randi([1 size(data_b,1)]);
         prototype_a = data_a(rand_a,:);
@@ -28,14 +25,13 @@ function [G, N_aB, N_bA] = MED_sequential_discriminant(data_A, data_B)
                
         aB = find(n_aB>0);
         bA = find(n_bA<0);
+        not_aA = find(n_aB>=0);
+        not_bB = find(n_bA<=0);
         n_aB = length(aB);
         n_bA = length(bA);
         
         if n_aB ~= 0 && n_bA ~= 0, continue; end
-        
-%         G_temp = zeros(j,3);
-%         N_aB_temp = zeros(j,1);
-%         N_bA_temp = zeros(j,1);
+
         if j == 1 
             G = g;
             N_aB = n_aB;
@@ -44,16 +40,12 @@ function [G, N_aB, N_bA] = MED_sequential_discriminant(data_A, data_B)
             G = [G g];  
             N_aB = [N_aB; n_aB];
             N_bA = [N_bA; n_bA];
-                
-%             G = G_temp;
-%             N_aB = N_aB_temp;
-%             N_bA = N_bA_temp;
         end
         
         j = j+1;
         
-        if n_aB == 0, data_b = data_b(bA,:); end
-        if n_bA == 0, data_a = data_a(aB,:); end
+        if n_aB == 0, data_b = data_b(not_bB,:); end
+        if n_bA == 0, data_a = data_a(not_aA,:); end
 
     end
 end
