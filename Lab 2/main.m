@@ -4,6 +4,7 @@ close all;
 addpath('./datasets','./plotting');
 
 % Sampling rate
+step_size_plot = 0.05
 step_size = 0.5;
 
 load_data;
@@ -18,11 +19,11 @@ lambda_hat_b = parametric_exponential(data_1b);
 [lower_a,upper_a] = parametric_uniform(data_1a);
 [lower_b,upper_b] = parametric_uniform(data_1b);
 
-[parz_a1, x_a1] = parzen_1d(data_1a,[0.01],0.1);
-[parz_b1, x_b1] = parzen_1d(data_1b,[0.01],0.1);
+[parz_a1, x_a1] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.1);
+[parz_b1, x_b1] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.1);
 
-[parz_a2, x_a2] = parzen_1d(data_1a,[0.01],0.4);
-[parz_b2, x_b2] = parzen_1d(data_1b,[0.01],0.4);
+[parz_a2, x_a2] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.4);
+[parz_b2, x_b2] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.4);
 
 plot_1d;
 
@@ -41,7 +42,6 @@ covs = cat(3,cov_hat_a,cov_hat_b,cov_hat_c);
 ML_result = ML_Gaussian(mus,covs,X,Y);
 
 %% Model Estimation 2-D Non Parametric
-
 low_x = min([min(data_2al(:,1)),min(data_2bl(:,1)),min(data_2cl(:,1))]);
 high_x = max([max(data_2al(:,1)),max(data_2bl(:,1)),max(data_2cl(:,1))])+1;
 low_y = min([min(data_2al(:,2)),min(data_2bl(:,2)),min(data_2cl(:,2))]);
