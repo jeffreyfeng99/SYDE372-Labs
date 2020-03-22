@@ -2,7 +2,7 @@ function [G, N_aB, N_bA] = MED_sequential_discriminant(data_A, data_B)
 %     rng(5);
 %     rng(1);
 %     current = RandStream.Seed;
-rng(4);
+%     rng(4);
     data_a = [ones(length(data_A),1) data_A];
     data_b = [ones(length(data_B),1) data_B];
     
@@ -15,8 +15,8 @@ rng(4);
 %         a = 
 %         la = length(data_a)
 %         lb = length(data_b)
-%         rand_a = randi([1 size(data_a,1)])
-%         rand_b = randi([1 size(data_b,1)])
+        rand_a = randi([1 size(data_a,1)]);
+        rand_b = randi([1 size(data_b,1)]);
         prototype_a = data_a(rand_a,:);
         prototype_b = data_b(rand_b,:);
         
