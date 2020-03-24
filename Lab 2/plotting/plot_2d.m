@@ -1,8 +1,8 @@
 %% Parametric Gaussian
 
-map = [240, 255, 219; % Region C
-       207, 241, 255; % Region D
-       255, 189, 201]; % Region E
+map = [240, 255, 219; % Region A
+       207, 241, 255; % Region B
+       255, 189, 201]; % Region C
 map = map/255;
 
 figure
@@ -16,10 +16,17 @@ scatter(data_2al(:,1),data_2al(:,2),25,'+', 'MarkerEdgeColor', '#77AC30');
 scatter(data_2bl(:,1),data_2bl(:,2),25,'o', 'MarkerEdgeColor', '#4DBEEE');
 scatter(data_2cl(:,1),data_2cl(:,2),25,'x', 'MarkerEdgeColor', '#A2142F');
 
-gaussian_2d_lg = legend('ML boundary', 'Data al', 'Data bl', 'Data cl', ...
+% label decision regions
+text(300,48,'R_{a}','Color','#385e06','FontSize',14,'FontWeight','bold');
+text(150,100,'R_{b}','Color','#0377a8','FontSize',14,'FontWeight','bold');
+text(50,275,'R_{c}','Color','#6e0015','FontSize',14,'FontWeight','bold');
+
+gaussian_2d_lg = legend('ML boundary', 'Data a', 'Data b', 'Data c', ...
                  'Location', 'northeast');
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 0.5 0.75]);
 title(gaussian_2d_lg, 'Legend')
+
+%Plot ellipses 
 % [evec_A, eval_A] = eig(cov_hat_a);
 % theta_A = atan(evec_A(1,2)/evec_A(1,1));
 % [evec_B, eval_B] = eig(cov_hat_b);
@@ -33,9 +40,9 @@ title(gaussian_2d_lg, 'Legend')
 
 %% Nonparametric
 
-map = [240, 255, 219; % Region C
-       207, 241, 255; % Region D
-       255, 189, 201]; % Region E
+map = [240, 255, 219; % Region A
+       207, 241, 255; % Region B
+       255, 189, 201]; % Region C
 map = map/255;
 
 figure
@@ -49,7 +56,12 @@ scatter(data_2al(:,1),data_2al(:,2),25,'+', 'MarkerEdgeColor', '#77AC30');
 scatter(data_2bl(:,1),data_2bl(:,2),25,'o', 'MarkerEdgeColor', '#4DBEEE');
 scatter(data_2cl(:,1),data_2cl(:,2),25,'x', 'MarkerEdgeColor', '#A2142F');
 
-parz_2d_lg = legend('ML boundary', 'Data al', 'Data bl', 'Data cl', ...
+%label decision regions
+text(300,48,'R_{a}','Color','#385e06','FontSize',14,'FontWeight','bold');
+text(150,100,'R_{b}','Color','#0377a8','FontSize',14,'FontWeight','bold');
+text(50,275,'R_{c}','Color','#6e0015','FontSize',14,'FontWeight','bold');
+
+parz_2d_lg = legend('ML boundary', 'Data a', 'Data b', 'Data c', ...
                  'Location', 'northeast');
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.5 0 0.5 0.75]);
 title(parz_2d_lg, 'Legend')
