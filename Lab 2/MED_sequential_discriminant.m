@@ -1,8 +1,5 @@
 function [G, N_aB, N_bA] = MED_sequential_discriminant(data_A, data_B)
-%     rng(5);
-%     rng(1);
-%     current = RandStream.Seed;
-%     rng(4);
+
     data_a = [ones(length(data_A),1) data_A];
     data_b = [ones(length(data_B),1) data_B];
     

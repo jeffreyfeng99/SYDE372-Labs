@@ -1,28 +1,20 @@
 
 % Parzen - compute 1d density estimates
 %
-% [p,x,y] = parzen_1d( data, res, win )    
+% [p,x] = parzen_1d( data, res, sigma, h )    
 %
 %  data - two-column matrix of (x,y) points
 %         (third row/col optional point frequency)
 %  res  - resolution (step size)
 %         optionally [res lowx highx]
-%  win  - optional, gives form of window 
-%          if a scalar - radius of square window
-%          if a vector - radially symmetric window
-%          if a matrix - actual 2D window shape
+%  sigma- standard deviation of gaussian window
+%  h    - scaling
 %
 %  x    - locations along x-axis
-%  y    - locations along y-axis
 %  p    - estimated 2D PDF
 %
 
-%
-% P. Fieguth
-% Nov. 1997
-%
-
-function [p,x] = parzen_1d(data, res, sigma)
+function [p,x] = parzen_1d(data, res, sigma, h)
 % sigma is the standard dev of the Gaussian window
 
 if (size(data,2)>size(data,1)), data = data'; end;
@@ -36,12 +28,11 @@ if (max(dh-dl)/res>1000),
   error('Excessive data range relative to resolution.');
 end;
 
-%x = [dl:res:dh+2]';
 x = [dl:res:dh]';
 p = zeros(length(x),1);  
 
 for i=1:length(x),
-  p(i) = 1/numpts * sum(normpdf(x(i), data, sigma));
+  p(i) = 1/numpts * sum(1/h*normpdf((x(i)-data)/h,0,sigma));
 end;
 
 end

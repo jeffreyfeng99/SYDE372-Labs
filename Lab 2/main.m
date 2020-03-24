@@ -4,7 +4,7 @@ close all;
 addpath('./datasets','./plotting');
 
 % Sampling rate
-step_size_plot = 0.05
+step_size_plot = 0.05;
 step_size = 0.5;
 
 load_data;
@@ -17,13 +17,15 @@ lambda_hat_a = parametric_exponential(data_1a);
 lambda_hat_b = parametric_exponential(data_1b);
 
 [lower_a,upper_a] = parametric_uniform(data_1a);
+
 [lower_b,upper_b] = parametric_uniform(data_1b);
 
-[parz_a1, x_a1] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.1);
-[parz_b1, x_b1] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.1);
+% Do this twice, once with h = 1, once with h = k/sqrt(N)
+[parz_a1, x_a1] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.1, 50/sqrt(length(data_1a)));
+[parz_b1, x_b1] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.1,1);
 
-[parz_a2, x_a2] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.4);
-[parz_b2, x_b2] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.4);
+[parz_a2, x_a2] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.4,1);
+[parz_b2, x_b2] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.4,1);
 
 plot_1d;
 
