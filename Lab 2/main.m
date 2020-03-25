@@ -23,13 +23,13 @@ lambda_hat_b = parametric_exponential(data_1b);
 % Do this twice, once with h = 1, once with h = k/sqrt(N)
 [parz_a1, x_a1] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.1, 1);
 [parz_b1, x_b1] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.1,1);
-[parz_a1h, x_a1h] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.1, 50/sqrt(length(data_1a)));
-[parz_b1h, x_b1h] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.1,50/sqrt(length(data_1b)));
+[parz_a1h, x_a1h] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.1,55/sqrt(length(data_1a))); 
+[parz_b1h, x_b1h] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.1,55/sqrt(length(data_1b)));
 
 [parz_a2, x_a2] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.4,1);
 [parz_b2, x_b2] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.4,1);
-[parz_a2h, x_a2h] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.4,50/sqrt(length(data_1a)));
-[parz_b2h, x_b2h] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.4,50/sqrt(length(data_1b)));
+[parz_a2h, x_a2h] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.4,13/sqrt(length(data_1a)));
+[parz_b2h, x_b2h] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.4,13/sqrt(length(data_1b)));
 
 plot_1d;
 
