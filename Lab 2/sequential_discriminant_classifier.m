@@ -13,10 +13,10 @@ for j=1:size(G,2)
             if classified(i) > 0 && N_aB(j) == 0
                 class_arr(i) = 2;
             elseif classified(i) < 0 && N_bA(j) == 0
-                class_arr(i) = 3;
+                class_arr(i) = 1;
             end
         end
     end
 end
-class_arr = class_arr-2;
+class_arr = class_arr-1;
 end

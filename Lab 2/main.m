@@ -27,7 +27,7 @@ lambda_hat_b = parametric_exponential(data_1b);
 [parz_a2, x_a2] = parzen_1d(data_1a,[0.01 min(data_1a)-2 max(data_1a)+2],0.4,1);
 [parz_b2, x_b2] = parzen_1d(data_1b,[0.01 min(data_1b)-2 max(data_1b)+2],0.4,1);
 
-plot_1d;
+% plot_1d;
 
 %% Model Estimation 2-D Parametric
 x = [min([min(data_2al(:,1)),min(data_2bl(:,1)),min(data_2cl(:,1))]):step_size:max([max(data_2al(:,1)),max(data_2bl(:,1)),max(data_2cl(:,1))])+1];
@@ -69,47 +69,22 @@ plot_2d;
 x = [min([min(data_3a(:,1)),min(data_3b(:,1))]):step_size:max([max(data_3a(:,1)),max(data_3b(:,1))])+1];
 y = [min([min(data_3a(:,2)),min(data_3b(:,2))]):step_size:max([max(data_3a(:,2)),max(data_3b(:,2))])+1];
 [X,Y] = meshgrid(x,y);
+grid = [X(:) Y(:)];
 
-[G_1, N_aB_1, N_bA_1] = MED_sequential_discriminant(data_3a,data_3b);
-[G_2, N_aB_2, N_bA_2] = MED_sequential_discriminant(data_3a,data_3b);
-[G_3, N_aB_3, N_bA_3] = MED_sequential_discriminant(data_3a,data_3b);
+[G_1, N_aB_1, N_bA_1] = MED_sequential_discriminant(data_3a,data_3b); % 3
+[G_2, N_aB_2, N_bA_2] = MED_sequential_discriminant(data_3a,data_3b); % 4
+[G_3, N_aB_3, N_bA_3] = MED_sequential_discriminant(data_3a,data_3b); % 51421752
 
 % Show individual discriminants
-figure
-hold on
-scatter(data_3a(:,1),data_3a(:,2));
-scatter(data_3b(:,1),data_3b(:,2));
-for i=1:size(G_1,2)
-f = @(x,y) G_1(1,i) + G_1(2,i)*x + G_1(3,i)*y;
-fimplicit(f, [min(x),max(x)]);
-end
+% figure
+% hold on
+% scatter(data_3a(:,1),data_3a(:,2));
+% scatter(data_3b(:,1),data_3b(:,2));
+% for i=1:size(G_1,2)
+% f = @(x,y) G_1(1,i) + G_1(2,i)*x + G_1(3,i)*y;
+% fimplicit(f, [min(x),max(x)]);
+% end
 
-% Show complete contour
-grid = [X(:) Y(:)];
-% First sequential discriminant
-classes_1 = sequential_discriminant_classifier(G_1,N_aB_1,N_bA_1,grid);
-classes_1 = reshape(classes_1,[size(X,1) size(X,2)]);
-figure
-hold on 
-scatter(data_3a(:,1),data_3a(:,2));
-scatter(data_3b(:,1),data_3b(:,2));
-contour(X,Y,classes_1);
-% Second sequential discriminant
-classes_2 = sequential_discriminant_classifier(G_2,N_aB_2,N_bA_2,grid);
-classes_2 = reshape(classes_2,[size(X,1) size(X,2)]);
-figure
-hold on 
-scatter(data_3a(:,1),data_3a(:,2));
-scatter(data_3b(:,1),data_3b(:,2));
-contour(X,Y,classes_2);
-% Third sequential discriminant
-classes_3 = sequential_discriminant_classifier(G_3,N_aB_3,N_bA_3,grid);
-classes_3 = reshape(classes_3,[size(X,1) size(X,2)]);
-figure
-hold on 
-scatter(data_3a(:,1),data_3a(:,2));
-scatter(data_3b(:,1),data_3b(:,2));
-contour(X,Y,classes_3);
-
-plot_error_rates(data_3a,data_3b);
+plot_sequential_discriminants;
+% plot_error_rates(data_3a,data_3b);
 
