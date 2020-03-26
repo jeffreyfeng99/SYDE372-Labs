@@ -3,7 +3,7 @@ sampling_array_a = [min(data_1a(1,:))-2:step_size_plot:max(data_1a(1,:))+2];
 sampling_array_b = [min(data_1b(1,:))-2:step_size_plot:max(data_1b(1,:))+2];
 sampling_array_exp_a = [-1:step_size_plot:max(data_1a(1,:))+2];
 sampling_array_exp_b = [-1:step_size_plot:max(data_1b(1,:))+2];
-step_size_uniform = 0.005
+step_size_uniform = 0.005;
 sampling_array_uni_a = [lower_a-2:step_size_uniform:upper_a+2];
 sampling_array_uni_b = [lower_b-2:step_size_uniform:upper_b+2];
 
