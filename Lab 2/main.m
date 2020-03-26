@@ -1,8 +1,8 @@
 clear all;
 close all;
 
-addpath('./datasets','./plotting','./nonparametric', ...
-        './parametric','./sequential_discriminant');
+addpath('./datasets','./plotting', ...
+        './model_estimation','./sequential_discriminant');
 
 % Sampling rate
 step_size_plot = 0.05;
@@ -63,7 +63,7 @@ low_y = min([min(data_2al(:,2)),min(data_2bl(:,2)),min(data_2cl(:,2))]);
 high_y = max([max(data_2al(:,2)),max(data_2bl(:,2)),max(data_2cl(:,2))])+1;
 res = [step_size low_x low_y high_x high_y];
 
-%%% create gaussian window "win" here
+% create gaussian window 
 win_mu = [mean(x) mean(y)];
 win_sigma = [400 0;0 400];
 win = mvnpdf([X(:) Y(:)],win_mu,win_sigma);

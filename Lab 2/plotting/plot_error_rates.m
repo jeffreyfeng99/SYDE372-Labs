@@ -17,10 +17,9 @@ function plot_error_rates(data_A, data_B)
 J=5;
 iter=20;
 error_rate = zeros(iter,J);
+
 for j=1:J
-    
     for i=1:iter
-        %DOUBLE CHECK
         [G_j1, N_aB_j1, N_bA_j1] = MED_sequential_discriminant(data_A, data_B);
         if (size(G_j1, 2) < j) 
             error_rate(i,j) = 0;

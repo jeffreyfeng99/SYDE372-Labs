@@ -36,7 +36,7 @@ function [G, N_aB, N_bA] = MED_sequential_discriminant(data_A, data_B)
         w = (prototype_b(2:3) - prototype_a(2:3));
         g = [0.5*(prototype_a(2:3)*prototype_a(2:3)' - prototype_b(2:3)*prototype_b(2:3)') w]';
         
-        n_aB = data_a*g; % rename later
+        n_aB = data_a*g; 
         n_bA = data_b*g;
                
         aB = find(n_aB>0);
