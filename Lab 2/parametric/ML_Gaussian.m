@@ -1,7 +1,7 @@
 %
 % ML(mu, covar, X, Y)
 %
-% This method determines boundaries based on the MAP decision rule.
+% This method determines boundaries based on the ML decision rule.
 %
 % Parameters
 % mu: 3D matrix (2,1,n) containing the mean vectors of n classes 
