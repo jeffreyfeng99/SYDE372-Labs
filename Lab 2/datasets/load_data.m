@@ -1,5 +1,4 @@
 % Load data for Section 1
-
 sect1_data = load('lab2_1.mat');
 data_1a = sect1_data.a;
 data_1b = sect1_data.b;

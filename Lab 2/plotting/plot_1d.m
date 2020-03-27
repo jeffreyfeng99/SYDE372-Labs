@@ -1,4 +1,4 @@
-%Different sampling arrays and step sizes for plotting
+% Different sampling arrays and step sizes for plotting
 sampling_array_a = [min(data_1a(1,:))-2:step_size_plot:max(data_1a(1,:))+2];
 sampling_array_b = [min(data_1b(1,:))-2:step_size_plot:max(data_1b(1,:))+2];
 sampling_array_exp_a = [-1:step_size_plot:max(data_1a(1,:))+2];

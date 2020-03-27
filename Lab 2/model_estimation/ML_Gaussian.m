@@ -1,5 +1,5 @@
 %
-% ML(mu, covar, X, Y)
+% ML_Gaussian(mu, covar, X, Y)
 %
 % This method determines boundaries based on the ML decision rule.
 %
