@@ -14,7 +14,7 @@ p_a = normpdf(sampling_array_a,mu_1a,var_1a);
 figure
 hold on
 title('Gaussian parametric estimation for data set a');
-xlabel('x'); ylabel('p(x)')  
+xlabel('x'); ylabel('p(x)');  
 xlim([min(data_1a(1,:))-2 max(data_1a(1,:))+2])
 
 scatter(data_1a,zeros(1,length(data_1a)),10,'o','MarkerEdgeColor', '#77AC30');
@@ -210,6 +210,7 @@ parz_1d_lg = legend('Sample density','True distribution', 'Estimated distributio
                  'Location', 'northeast');
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0.25 0.5 0.75]);
 title(parz_1d_lg, 'Legend')
+
 %% Parzen b (0.1 st. dev and scaling factor)
 p_b = exppdf(sampling_array_b,1/lambda_1b);
 
@@ -228,7 +229,6 @@ parz_1d_lg = legend('Sample density','True distribution', 'Estimated distributio
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0.5 0.25 0.5 0.75]);
 title(parz_1d_lg, 'Legend')
 
-
 %% Parzen a (0.4 st. dev and scaling factor) 
 p_a = normpdf(sampling_array_a,mu_1a,var_1a);
 
@@ -246,6 +246,7 @@ parz_1d_lg = legend('Sample density','True distribution', 'Estimated distributio
                  'Location', 'northeast');
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0.25 0.5 0.75]);
 title(parz_1d_lg, 'Legend')
+
 %% Parzen b (0.4 st. dev and scaling factor)
 p_b = exppdf(sampling_array_b,1/lambda_1b);
 

@@ -8,6 +8,7 @@ map = map/255;
 figure
 hold on
 title('Gaussian parametric classification for three classes');
+xlabel('x1'); ylabel('x2');  
 
 contourf(X,Y,ML_result, 'LineColor', '#ffaa00');
 colormap(map);
@@ -48,6 +49,7 @@ map = map/255;
 figure
 hold on
 title('Non-parametric classification for three classes using a Gaussian Parzen window');
+xlabel('x1'); ylabel('x2');  
 
 contourf(x_a_2,y_a_2,parz_decision, 'LineColor', '#ffaa00');
 colormap(map);
